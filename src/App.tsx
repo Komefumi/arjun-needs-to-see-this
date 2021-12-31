@@ -9,7 +9,7 @@ enum AlertVariant {
 
 const alertMessageForVariant = {
   [AlertVariant.INFO]:
-    "Hello! You can use this tool to immediately notify me (Arjun) of any matter relevant. The title you pick would be the subject of the email that would be sent to me, and the content would be everything you might want to write out. Make sure you input both a title and content. And then hit send",
+  "<p>Use this to notify me (Arjun). You don't have to provide any details, but you optionally can if you want me to reach back to you.</p> <p>Basically, you're able to notify me of anything urgent.</p>",
   [AlertVariant.ERROR]:
     "Uh, oh. Something went wrong. Might want to refresh and try again later. Or report a problem, and it'll hopefully get fixed-",
   [AlertVariant.SUCCESS]: "Successfully posted message",
@@ -52,9 +52,7 @@ function App() {
     <div>
       <div className="container entirety">
         <div className="alerts">
-          <div className={`alert alert-${alertVariant}`} role="alert">
-            {alertMessageForVariant[alertVariant]}
-          </div>
+          <div className={`alert alert-${alertVariant}`} dangerouslySetInnerHTML={{ __html: alertMessageForVariant[alertVariant] }} role="alert" />
         </div>
 
         <div className="form">
